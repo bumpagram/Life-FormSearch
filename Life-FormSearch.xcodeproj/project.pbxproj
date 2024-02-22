@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5AEDE3022B8773B900DC3FC1 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDE3012B8773B900DC3FC1 /* SearchTableViewController.swift */; };
 		5AEE9A6F2B8667E8003C702E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE9A6E2B8667E8003C702E /* AppDelegate.swift */; };
 		5AEE9A712B8667E8003C702E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE9A702B8667E8003C702E /* SceneDelegate.swift */; };
-		5AEE9A732B8667E8003C702E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE9A722B8667E8003C702E /* ViewController.swift */; };
+		5AEE9A732B8667E8003C702E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE9A722B8667E8003C702E /* DetailsViewController.swift */; };
 		5AEE9A762B8667E8003C702E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEE9A742B8667E8003C702E /* Main.storyboard */; };
 		5AEE9A782B8667E9003C702E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AEE9A772B8667E9003C702E /* Assets.xcassets */; };
 		5AEE9A7B2B8667E9003C702E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AEE9A792B8667E9003C702E /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5AEDE3012B8773B900DC3FC1 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		5AEE9A6B2B8667E8003C702E /* Life-FormSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Life-FormSearch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AEE9A6E2B8667E8003C702E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AEE9A702B8667E8003C702E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5AEE9A722B8667E8003C702E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5AEE9A722B8667E8003C702E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		5AEE9A752B8667E8003C702E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5AEE9A772B8667E9003C702E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5AEE9A7A2B8667E9003C702E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 		5AEE9A622B8667E8003C702E = {
 			isa = PBXGroup;
 			children = (
+				5AEDE3012B8773B900DC3FC1 /* SearchTableViewController.swift */,
 				5AEE9A6D2B8667E8003C702E /* Life-FormSearch */,
 				5AEE9A6C2B8667E8003C702E /* Products */,
 			);
@@ -58,7 +61,7 @@
 			children = (
 				5AEE9A6E2B8667E8003C702E /* AppDelegate.swift */,
 				5AEE9A702B8667E8003C702E /* SceneDelegate.swift */,
-				5AEE9A722B8667E8003C702E /* ViewController.swift */,
+				5AEE9A722B8667E8003C702E /* DetailsViewController.swift */,
 				5AEE9A742B8667E8003C702E /* Main.storyboard */,
 				5AEE9A772B8667E9003C702E /* Assets.xcassets */,
 				5AEE9A792B8667E9003C702E /* LaunchScreen.storyboard */,
@@ -138,9 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AEE9A732B8667E8003C702E /* ViewController.swift in Sources */,
+				5AEE9A732B8667E8003C702E /* DetailsViewController.swift in Sources */,
 				5AEE9A6F2B8667E8003C702E /* AppDelegate.swift in Sources */,
 				5AEE9A712B8667E8003C702E /* SceneDelegate.swift in Sources */,
+				5AEDE3022B8773B900DC3FC1 /* SearchTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

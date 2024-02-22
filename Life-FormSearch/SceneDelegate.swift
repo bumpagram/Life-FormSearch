@@ -1,8 +1,6 @@
-//
 //  SceneDelegate.swift
 //  Life-FormSearch
-//
-//  Created by Denis Azarkov on 21/2/24.
+//  Created by .b[u]mpagram  on 21/2/24.
 //
 
 import UIKit
