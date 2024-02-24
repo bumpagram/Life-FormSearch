@@ -7,7 +7,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
     
-    //var lifeForm: ?  РАСПАРСИТЬ ОБЪЕКТ, ПЕРЕДАТЬ ИЗ ДРУГОГО VC
+    var lifeForm: LifeForm?  // РАСПАРСИТЬ ОБЪЕКТ, ПЕРЕДАТЬ ИЗ ДРУГОГО VC
     
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var detailsNavigationItem: UINavigationItem!

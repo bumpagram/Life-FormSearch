@@ -15,6 +15,15 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         super.viewDidLoad()
         
         
+        let testObject = LifeForm(commonName: "AAA", id: 46577088, link: URL(string: "https:")!, scientificName: "BBB")
+        Task {
+            do {
+                let serverResponce = try await NetworkClass.shared.fetchPagesAPI(for: testObject )
+                print("Successfully fetched PagesAPI item. \n  \(serverResponce)")
+            } catch {
+                print("Error fetching item: \n \(error)")
+            }
+        }
         
     }
     
