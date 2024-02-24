@@ -5,9 +5,9 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
+class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
-    var searchResults = [String]() // заменить на кастомные объекты структуры, а не стринг
+    var searchResults = [LifeForm]() 
     
     @IBOutlet var searchBar: UISearchBar!
     
@@ -15,11 +15,41 @@ class SearchTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
+        
     }
     
     
+    func processUserInput() {
+        // для обработки query параметров из searchBar + task на Network.fetchSearch
+        searchResults = []
+        tableView.reloadData()
+        let searchTerm = searchBar.text ?? ""
+        guard !searchTerm.isEmpty else {return}
+        let userQuery = [
+            "q" : "\(searchTerm)"
+        ]
+        
+        Task {
+            do {
+                let serverResponce = try await NetworkClass.shared.fetchSearchResults(for: userQuery)
+                // if successful, use the main queue to set property and reload the table view
+                searchResults = serverResponce
+                print("Successfully fetched SearchResult items.")
+                tableView.reloadData()
+            } catch {
+                print("Error fetching items: \(error)")
+            }
+        }
+    }
     
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        // метод из протокола для захвата события типо editingDidEnd/returnKeyPressed
+        processUserInput()
+        searchBar.resignFirstResponder()
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,8 +65,8 @@ class SearchTableViewController: UITableViewController {
         // Configure the cell...
         var content = cell.defaultContentConfiguration()
         let elementToShow = searchResults[indexPath.row]
-        // content.text = elementToShow. ПОЛЕ ИМЯ
-        // content.secondaryText = elementToShow. ПОЛЕ ДЕСКРИПШЕН/subtitle
+        content.text = elementToShow.commonName
+        content.secondaryText = elementToShow.scientificName
         cell.contentConfiguration = content
         return cell
     }
@@ -65,4 +95,17 @@ class SearchTableViewController: UITableViewController {
     }
     */
 
+}
+
+
+extension Data {
+    func prettyPrintedJSONstring() {
+        guard let jsonObject = try? JSONSerialization.jsonObject(with: self, options: []),
+              let jsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: [.prettyPrinted]),
+              let prettyJSONstring = String(data: jsonData, encoding: .utf8) else {
+            print("Failed to read JSON object")
+            return
+        }
+        print(prettyJSONstring) // кастомный метод для вывода в консоль джейсонов в читабельном виде
+    }
 }

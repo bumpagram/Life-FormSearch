@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5ABF18162B89FBF3000D1773 /* NetworkClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF18152B89FBF3000D1773 /* NetworkClass.swift */; };
+		5ABF18182B89FD36000D1773 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABF18172B89FD36000D1773 /* Model.swift */; };
 		5AEDE3022B8773B900DC3FC1 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEDE3012B8773B900DC3FC1 /* SearchTableViewController.swift */; };
 		5AEE9A6F2B8667E8003C702E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE9A6E2B8667E8003C702E /* AppDelegate.swift */; };
 		5AEE9A712B8667E8003C702E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AEE9A702B8667E8003C702E /* SceneDelegate.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5ABF18152B89FBF3000D1773 /* NetworkClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClass.swift; sourceTree = "<group>"; };
+		5ABF18172B89FD36000D1773 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5AEDE3012B8773B900DC3FC1 /* SearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		5AEE9A6B2B8667E8003C702E /* Life-FormSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Life-FormSearch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AEE9A6E2B8667E8003C702E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +46,8 @@
 		5AEE9A622B8667E8003C702E = {
 			isa = PBXGroup;
 			children = (
+				5ABF18172B89FD36000D1773 /* Model.swift */,
+				5ABF18152B89FBF3000D1773 /* NetworkClass.swift */,
 				5AEDE3012B8773B900DC3FC1 /* SearchTableViewController.swift */,
 				5AEE9A6D2B8667E8003C702E /* Life-FormSearch */,
 				5AEE9A6C2B8667E8003C702E /* Products */,
@@ -141,7 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ABF18182B89FD36000D1773 /* Model.swift in Sources */,
 				5AEE9A732B8667E8003C702E /* DetailsViewController.swift in Sources */,
+				5ABF18162B89FBF3000D1773 /* NetworkClass.swift in Sources */,
 				5AEE9A6F2B8667E8003C702E /* AppDelegate.swift in Sources */,
 				5AEE9A712B8667E8003C702E /* SceneDelegate.swift in Sources */,
 				5AEDE3022B8773B900DC3FC1 /* SearchTableViewController.swift in Sources */,
