@@ -14,7 +14,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        /// временная строка пока парсим джейсоны от API
         let testObject = LifeForm(commonName: "AAA", id: 46577088, link: URL(string: "https:")!, scientificName: "BBB")
         Task {
             do {
@@ -24,7 +24,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
                 print("Error fetching item: \n \(error)")
             }
         }
-        
+        ///
     }
     
     
@@ -51,10 +51,14 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
-
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // метод из протокола для захвата события типо editingDidEnd/returnKeyPressed
         processUserInput()
+        searchBar.resignFirstResponder()
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = nil
         searchBar.resignFirstResponder()
     }
     
@@ -64,7 +68,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         searchResults.count
     }
@@ -80,10 +84,10 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         return cell
     }
     
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     
 
     /*

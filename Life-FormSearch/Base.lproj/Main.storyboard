@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Encyclopedia of Life" showsSearchResultsButton="YES" id="TMf-Xd-94s">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Encyclopedia of Life" showsSearchResultsButton="YES" showsCancelButton="YES" id="TMf-Xd-94s">
                             <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>

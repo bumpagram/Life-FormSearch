@@ -52,11 +52,46 @@ class NetworkClass {
     }
     
     
+    func fetchHierarchyAPI(for identifier: Int) async throws -> HierarchyResponse {
+        
+        var urlComponent = URLComponents(string: "https://eol.org/api/hierarchy_entries/1.0/\(identifier).json")!
+        let queryPreset = [
+            "language" : "en"
+        ]
+        urlComponent.queryItems = queryPreset.map({  URLQueryItem(name: $0.key, value: $0.value)  })
+        
+        let (someData, someResponse) = try await URLSession.shared.data(from: urlComponent.url!)
+        guard let httpResponse = someResponse as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+            throw ErrorHandler.hierarchyAPIerror
+        }
+        let jsondecoder = JSONDecoder()
+        let serverAnswer = try jsondecoder.decode(HierarchyResponse.self, from: someData)
+        return serverAnswer
+    }
+    
+    
+    func fetchImage(from url: URL) async throws -> UIImage {
+                    
+            let (data, response) = try await URLSession.shared.data(from: url)
+            
+            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                throw ErrorHandler.noImageData
+            }
+            guard let createImage = UIImage(data: data) else {
+                throw ErrorHandler.noImageData
+            }
+            
+            return createImage
+        }
     
 }
 
 enum ErrorHandler: Error, LocalizedError {
     case itemNotFound
     case pagesAPIerror
+    case hierarchyAPIerror
+    case noImageData
 }
+
+
 

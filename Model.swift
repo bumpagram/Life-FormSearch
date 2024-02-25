@@ -4,6 +4,7 @@
 
 import Foundation
 
+// SEARCH API JSON Parsing //
 struct LifeForm: Codable {
     
     var commonName: String
@@ -22,10 +23,11 @@ struct LifeForm: Codable {
 struct SearchResponse: Codable {
     let results: [LifeForm]
 }
+// --------------------- //
 
 
 
-
+// PAGES API JSON Parsing //
 struct PagesResponse: Codable {
     let details: Details    //  ТУТ СЛОВАРИ И ОБЪЕКТЫ ДРУГ В ДРУГА в JSON
     enum CodingKeys: String, CodingKey {
@@ -36,8 +38,7 @@ struct PagesResponse: Codable {
 struct Details: Codable {
     var dataObjects: [DataObjects]?
     var taxonConcepts: [TaxonConcepts]?  // просто берем первый элемент
-    let scientificName: String
-    // НЕДОДЕЛАН
+    let scientificName: String   // лучше использовать это поле вместо инфы из Search API-title
 }
 
 struct DataObjects: Codable {
@@ -45,7 +46,7 @@ struct DataObjects: Codable {
     var pictureURL: URL
     var license: URL
     var rightsHolder: String?
-    // НЕДОДЕЛАН
+
     enum CodingKeys: String, CodingKey {
         case agents
         case pictureURL = "eolMediaURL"
@@ -67,4 +68,17 @@ struct TaxonConcepts: Codable {
     var nameAccordingTo: String
     var identifier: Int     // will be used to request the details of the classification in the hierarchy API.
 }
+// --------------------- //
 
+
+
+// HIERARCHY API JSON Parsing //
+struct HierarchyResponse: Codable {
+    let ancestors: [Ancestors]
+}
+
+struct Ancestors: Codable {
+    var taxonRank: String?
+    var scientificName: String
+}
+// --------------------- //
