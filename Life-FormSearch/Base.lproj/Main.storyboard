@@ -233,6 +233,13 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sMx-BM-gmc">
+                                <rect key="frame" x="185" y="823" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="hBe-LM-Kc9"/>
+                                    <constraint firstAttribute="height" constant="60" id="kwx-Ah-knB"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -243,6 +250,7 @@
                             <constraint firstItem="9Sa-3r-a6G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="63e-qM-QCn"/>
                             <constraint firstItem="YzA-BS-3Zc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="6Q5-KO-Oft"/>
                             <constraint firstItem="dMQ-MP-nou" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="8Jx-V5-25a"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sMx-BM-gmc" secondAttribute="bottom" constant="15" id="8qc-L7-r7u"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YzA-BS-3Zc" secondAttribute="trailing" constant="15" id="9H8-97-3Je"/>
                             <constraint firstItem="Ns1-rg-ckO" firstAttribute="top" secondItem="cDP-qq-wwQ" secondAttribute="bottom" constant="15" id="AB3-Tg-CvV"/>
                             <constraint firstItem="9Sa-3r-a6G" firstAttribute="top" secondItem="dMQ-MP-nou" secondAttribute="bottom" constant="15" id="BDL-hp-MKj"/>
@@ -258,6 +266,7 @@
                             <constraint firstItem="08b-Tf-ZF9" firstAttribute="top" secondItem="BSd-OY-yjJ" secondAttribute="bottom" constant="15" id="e58-ev-Y17"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yoe-JX-PsF" secondAttribute="trailing" constant="15" id="jf2-eM-doT"/>
                             <constraint firstItem="Yoe-JX-PsF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="kXd-M8-rb6"/>
+                            <constraint firstItem="sMx-BM-gmc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qR6-nI-AxA"/>
                             <constraint firstItem="Frd-Ax-ljO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="rat-hL-5EE"/>
                             <constraint firstItem="dMQ-MP-nou" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="15" id="tLu-Sd-U5c"/>
                             <constraint firstItem="cDP-qq-wwQ" firstAttribute="top" secondItem="9Sa-3r-a6G" secondAttribute="bottom" constant="40" id="tLu-Yf-bhW"/>
@@ -275,6 +284,7 @@
                         <outlet property="imageView" destination="dMQ-MP-nou" id="9XF-Py-q4U"/>
                         <outlet property="kingdomLabel" destination="xrp-2N-tgI" id="GVo-b0-7VM"/>
                         <outlet property="licenseButton" destination="odK-Ww-Pi2" id="0VO-He-1zS"/>
+                        <outlet property="loadingActivityIndicator" destination="sMx-BM-gmc" id="AUJ-lm-vk5"/>
                         <outlet property="nameAccordingToLabel" destination="kII-UU-MFR" id="4sH-Kr-Skp"/>
                         <outlet property="navigationItem" destination="2ax-Oe-2hf" id="boT-uL-pJd"/>
                         <outlet property="orderLabel" destination="T7X-Oa-1Gw" id="7Wm-xs-gVu"/>

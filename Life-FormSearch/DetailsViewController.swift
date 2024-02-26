@@ -13,7 +13,14 @@ class DetailsViewController: UIViewController {
     var hierarchyResponse: HierarchyResponse?
     var correctItemInTaxonConcepts: TaxonConcepts?
     
+    var currentRunningTasks: [String : Task<Void, Never>] = [:] {  // колесо-реестр Task-задач, чтобы показывать и скрывать UIActivityIndicator
+        didSet {
+            updateLoadingActivity()
+        }
+    }
     
+    
+    @IBOutlet var loadingActivityIndicator: UIActivityIndicatorView!
     @IBOutlet var licenseButton: UIButton!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var detailsNavigationItem: UINavigationItem!
@@ -33,7 +40,6 @@ class DetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         updateUI()
         receiveData()
-        
     }
     
     
@@ -45,9 +51,20 @@ class DetailsViewController: UIViewController {
         }
     }
     
+    func updateLoadingActivity() {
+        if currentRunningTasks.isEmpty {
+            loadingActivityIndicator.isHidden = true
+        } else {
+            loadingActivityIndicator.isHidden = false
+        }
+    }
+    
     
     func updateUI() {
+        updateLoadingActivity()
         detailsNavigationItem.title = lifeForm.commonName
+        licenseButton.isEnabled = false
+
         if pagesResponse != nil {
             scientificLabel.text = pagesResponse?.details.scientificName
             
@@ -59,8 +76,11 @@ class DetailsViewController: UIViewController {
             if let existedRights = pagesResponse?.details.dataObjects?.first?.rightsHolder {
                 rightsHolderLabel.text = existedRights
             } else {
-                let fullname = pagesResponse?.details.dataObjects?.first?.agents.first?.fullName
-                let role = pagesResponse?.details.dataObjects?.first?.agents.first?.role
+                guard let fullname = pagesResponse?.details.dataObjects?.first?.agents.first?.fullName,
+                      let role = pagesResponse?.details.dataObjects?.first?.agents.first?.role else {
+                    rightsHolderLabel.text = "API unavailable"
+                    return
+                }
                 rightsHolderLabel.text = "\(String(describing: fullname)), \(String(describing: role))"
             }
         } else {
@@ -100,23 +120,28 @@ class DetailsViewController: UIViewController {
     
     
     func receiveData() {
-        Task {
+        
+    currentRunningTasks["pagesAPI"] = Task { // положили таску в реестр, обновился через наблюдателя activityIndicator
             do {
               let somePagesResponse = try await NetworkClass.shared.fetchPagesAPI(for: lifeForm)
               self.pagesResponse = somePagesResponse
               print("Successfully fetched PagesAPI")
                 
-                Task {
+                currentRunningTasks["hierarchyAPI"] =  Task {
                     do {
                         guard let taxonConceptsArray = pagesResponse?.details.taxonConcepts else {return}
                         
-                        Task {
-                            guard let existedPropertyPagesURL = pagesResponse?.details.dataObjects?.first?.pictureURL else {return}
+                        currentRunningTasks["image"] = Task {
+                            guard let existedPropertyPagesURL = pagesResponse?.details.dataObjects?.first?.pictureURL else {
+                                currentRunningTasks["image"] = nil
+                                return
+                            }
                             if let fetchedImage = try? await NetworkClass.shared.fetchImage(from: existedPropertyPagesURL) {
                                 print("Successfully fetched Image")
                                 imageView.image = fetchedImage
                                 updateUI()
                             }
+                        currentRunningTasks["image"] = nil
                         }
                         
                         for item in taxonConceptsArray {
@@ -131,12 +156,14 @@ class DetailsViewController: UIViewController {
                         updateUI()
                         
                     } catch {  print("Error fetching HierarchyAPI: \(error)")  }
+                currentRunningTasks["hierarchyAPI"] = nil
                 }
-                
                 
             }
             catch {  print("Error fetching PagesAPI: \(error)")   }
+    currentRunningTasks["pagesAPI"] = nil   // удалили таску из реестра, обновился через наблюдателя activityIndicator
         }
+        
     }
     
     
