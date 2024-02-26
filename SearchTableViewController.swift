@@ -10,10 +10,12 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     var searchResults = [LifeForm]() 
     
     @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var loadingActivityIndicator: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateLoadingActivity(isVisible: false)
     }
     
     
@@ -24,7 +26,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         let searchTerm = searchBar.text ?? ""
         guard !searchTerm.isEmpty else {return}
         let userQuery = [
-            "q" : "\(searchTerm)"
+            "q" : "\(searchTerm.lowercased())"
         ]
         
         Task {
@@ -40,15 +42,26 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         }
     }
     
+    func updateLoadingActivity(isVisible now: Bool?) {
+        if now == true {
+            loadingActivityIndicator.isHidden = false
+        } else {
+            loadingActivityIndicator.isHidden = true
+        }
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // метод из протокола для захвата события типо editingDidEnd/returnKeyPressed
-        processUserInput()
         searchBar.resignFirstResponder()
+        updateLoadingActivity(isVisible: true)
+        processUserInput()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = nil
         searchBar.resignFirstResponder()
+        searchResults.removeAll()
+        tableView.reloadData()
+        updateLoadingActivity(isVisible: false)
     }
     
     

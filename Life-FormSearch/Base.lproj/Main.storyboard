@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="932"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Encyclopedia of Life" showsSearchResultsButton="YES" showsCancelButton="YES" id="TMf-Xd-94s">
+                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Encyclopedia of Life" showsCancelButton="YES" id="TMf-Xd-94s">
                             <rect key="frame" x="0.0" y="0.0" width="430" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits" returnKeyType="search"/>
@@ -24,6 +24,10 @@
                                 <outlet property="delegate" destination="r6t-0T-0IO" id="L7h-6g-GPK"/>
                             </connections>
                         </searchBar>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="qa4-cK-oBc">
+                            <rect key="frame" x="0.0" y="871.66666793823242" width="430" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="hgL-Vx-qE0" detailTextLabel="Miw-n5-ShC" style="IBUITableViewCellStyleSubtitle" id="3EY-XD-ceN">
                                 <rect key="frame" x="0.0" y="94" width="430" height="43.666667938232422"/>
@@ -60,6 +64,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Life-Form Search" id="jLc-Dl-0hJ"/>
                     <connections>
+                        <outlet property="loadingActivityIndicator" destination="qa4-cK-oBc" id="mMU-Nu-uRS"/>
                         <outlet property="searchBar" destination="TMf-Xd-94s" id="ZSv-AN-mTU"/>
                     </connections>
                 </tableViewController>
