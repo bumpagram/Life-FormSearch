@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailsViewController: UIViewController {
     
@@ -12,10 +13,11 @@ class DetailsViewController: UIViewController {
     var hierarchyResponse: HierarchyResponse?
     var correctItemInTaxonConcepts: TaxonConcepts?
     
+    
+    @IBOutlet var licenseButton: UIButton!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var detailsNavigationItem: UINavigationItem!
     @IBOutlet var rightsHolderLabel: UILabel!
-    @IBOutlet var licenseLabel: UILabel!
     @IBOutlet var nameAccordingToLabel: UILabel!
     @IBOutlet var scientificLabel: UILabel!
     @IBOutlet var kingdomLabel: UILabel!
@@ -31,8 +33,16 @@ class DetailsViewController: UIViewController {
         // Do any additional setup after loading the view.
         updateUI()
         receiveData()
-        //updateUI()
         
+    }
+    
+    
+    @IBAction func licenseButtonTapped(_ sender: UIButton) {
+        if let url = URL(string: licenseButton.currentTitle!) {
+            print(url)
+            let safari = SFSafariViewController(url: url)
+            present(safari, animated: true)
+        }
     }
     
     
@@ -40,7 +50,11 @@ class DetailsViewController: UIViewController {
         detailsNavigationItem.title = lifeForm.commonName
         if pagesResponse != nil {
             scientificLabel.text = pagesResponse?.details.scientificName
-            licenseLabel.text = pagesResponse?.details.dataObjects?.first?.license.formatted()  // форматировал URL в String для отображения в лейбле
+            
+            licenseButton.isEnabled = true
+            let buttonTitleLabel = pagesResponse?.details.dataObjects?.first?.license.formatted()  // форматировал URL в String для отображения в лейбле
+            licenseButton.setTitle(buttonTitleLabel, for: .normal)
+            
             nameAccordingToLabel.text = correctItemInTaxonConcepts?.nameAccordingTo
             if let existedRights = pagesResponse?.details.dataObjects?.first?.rightsHolder {
                 rightsHolderLabel.text = existedRights
@@ -50,9 +64,11 @@ class DetailsViewController: UIViewController {
                 rightsHolderLabel.text = "\(String(describing: fullname)), \(String(describing: role))"
             }
         } else {
-            scientificLabel.text = lifeForm.scientificName
-            licenseLabel.text = "API unavailable"
+            rightsHolderLabel.text = "API unavailable"
             nameAccordingToLabel.text = "API unavailable"
+            licenseButton.isEnabled = false
+            licenseButton.setTitle("API unavailable", for: .disabled)
+            scientificLabel.text = lifeForm.scientificName
         }
         
         if hierarchyResponse != nil {
