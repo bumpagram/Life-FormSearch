@@ -1,9 +1,9 @@
 //  SearchTableViewController.swift
 //  Life-FormSearch
 //  Created by .b[u]mpagram on 22/2/24.
-//
 
 import UIKit
+
 
 class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -14,17 +14,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /// временная строка пока парсим джейсоны от API
-        let testObject = LifeForm(commonName: "AAA", id: 46577088, link: URL(string: "https:")!, scientificName: "BBB")
-        Task {
-            do {
-                let serverResponce = try await NetworkClass.shared.fetchPagesAPI(for: testObject )
-                print("Successfully fetched PagesAPI item. \n  \(serverResponce)")
-            } catch {
-                print("Error fetching item: \n \(error)")
-            }
-        }
-        ///
     }
     
     
@@ -98,9 +87,17 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
     */
 
 
-    /*
+   
     // MARK: - Navigation
 
+     @IBSegueAction func showDetails(_ coder: NSCoder, sender: Any?, segueIdentifier: String?) -> DetailsViewController? {
+         guard let cell = sender as? UITableViewCell, let indexpath = tableView.indexPath(for: cell) else { return nil }
+         let tappedElement = searchResults[indexpath.row]
+         
+      return DetailsViewController(coder: coder, lifeForm: tappedElement)
+     }
+     
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.

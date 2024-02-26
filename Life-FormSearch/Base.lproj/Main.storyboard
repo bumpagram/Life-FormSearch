@@ -49,7 +49,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="fromCellToDetails" id="avk-Pb-F06"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="fromCellToDetails" destinationCreationSelector="showDetails:sender:segueIdentifier:" id="avk-Pb-F06"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -266,7 +266,11 @@
                     <connections>
                         <outlet property="detailsNavigationItem" destination="2ax-Oe-2hf" id="M0X-f2-nVc"/>
                         <outlet property="imageView" destination="dMQ-MP-nou" id="9XF-Py-q4U"/>
+                        <outlet property="licenseLabel" destination="nMb-Rm-gwv" id="4vt-B5-eVI"/>
+                        <outlet property="nameAccordingToLabel" destination="kII-UU-MFR" id="4sH-Kr-Skp"/>
                         <outlet property="navigationItem" destination="2ax-Oe-2hf" id="boT-uL-pJd"/>
+                        <outlet property="rightsHolderLabel" destination="UGG-7a-eLW" id="OVm-L2-5dh"/>
+                        <outlet property="scientificLabel" destination="yLn-6k-ZQY" id="TGu-dS-bqY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
