@@ -84,13 +84,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9Sa-3r-a6G" userLabel="MiddleVStack">
                                 <rect key="frame" x="15" y="346.33333333333331" width="400" height="126.33333333333331"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="full_name, role" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGG-7a-eLW">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="full_name, role" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGG-7a-eLW">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="20.333333333333332"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="license link" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-Rm-gwv">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="license link" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-Rm-gwv">
                                         <rect key="frame" x="0.0" y="35.333333333333371" width="400" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -102,7 +102,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameAccordingTo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kII-UU-MFR">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nameAccordingTo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kII-UU-MFR">
                                         <rect key="frame" x="0.0" y="106" width="400" height="20.333333333333329"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -264,11 +264,17 @@
                     </view>
                     <navigationItem key="navigationItem" title="Details ViewController" largeTitleDisplayMode="never" id="2ax-Oe-2hf"/>
                     <connections>
+                        <outlet property="classLabel" destination="Cfj-Je-2Jm" id="faA-U2-xWY"/>
                         <outlet property="detailsNavigationItem" destination="2ax-Oe-2hf" id="M0X-f2-nVc"/>
+                        <outlet property="familyLabel" destination="3VQ-WF-TL4" id="Qfl-Gh-bJ1"/>
+                        <outlet property="genusLabel" destination="1bO-vb-9be" id="1Lo-ac-38a"/>
                         <outlet property="imageView" destination="dMQ-MP-nou" id="9XF-Py-q4U"/>
+                        <outlet property="kingdomLabel" destination="xrp-2N-tgI" id="GVo-b0-7VM"/>
                         <outlet property="licenseLabel" destination="nMb-Rm-gwv" id="4vt-B5-eVI"/>
                         <outlet property="nameAccordingToLabel" destination="kII-UU-MFR" id="4sH-Kr-Skp"/>
                         <outlet property="navigationItem" destination="2ax-Oe-2hf" id="boT-uL-pJd"/>
+                        <outlet property="orderLabel" destination="T7X-Oa-1Gw" id="7Wm-xs-gVu"/>
+                        <outlet property="phylumLabel" destination="bP1-nd-bbm" id="efh-9a-oZ1"/>
                         <outlet property="rightsHolderLabel" destination="UGG-7a-eLW" id="OVm-L2-5dh"/>
                         <outlet property="scientificLabel" destination="yLn-6k-ZQY" id="TGu-dS-bqY"/>
                     </connections>
